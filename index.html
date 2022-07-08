@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./style.css" />
+
+    <title>Weather</title>
+    <script src="app.js"></script>
+    <script
+      src="https://kit.fontawesome.com/8a0b4c940d.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <nav class="topnav">
+        <p>
+          <span onclick="onMouseFirstCityHandler(event)" id="city1"> </span>
+          <span onclick="onMouseFirstCityHandler(event)" id="city1"> </span>
+          <span onclick="onMouseSecondCityHandler(event)" id="city2"></span>
+          <span onclick="onMouseThirdCityHandler(event)" id="city3"></span>
+          <button
+            class="addFavoriteCityandEdit"
+            onclick="openModalFavCitiesForm(event)"
+          >
+            Add favorite cities
+          </button>
+          <button
+            class="addFavoriteCityandEdit"
+            onclick="openModalEditCitiesForm(event)"
+          >
+            Edit favorite cities
+          </button>
+        </p>
+
+        <p class="wrapperButtonsP">
+          <button class="buttonP" type="submit" id="RegisteropenModalBtn">
+            Sign up
+          </button>
+          <button class="buttonP" type="submit" id="openModalBtn">
+            Sign in
+          </button>
+        </p>
+      </nav>
+      <!-- Edit na lubimi gradove -->
+
+      <div>
+        <form class="modal" id="EditCitiesForm">
+          <div class="formdiv">
+            <div class="formdiv">
+              <h1 align="center">Edit favorite cities</h1>
+
+              <input
+                class="formInput"
+                type="text"
+                id="editfavcity1"
+                placeholder="Enter first city"
+              />
+
+              <input
+                class="formInput"
+                type="text"
+                id="editfavcity2"
+                placeholder="Enter second city"
+              />
+              <input
+                class="formInput"
+                type="text"
+                id="editfavcity3"
+                placeholder="Enter third city"
+              />
+            </div>
+
+            <div>
+              <button
+                class="formButtonBottom"
+                id="editcloseBtn"
+                onclick="editCloseFavCitiesForm(event)"
+              >
+                Cancel
+              </button>
+              <button
+                class="formButtonBottom"
+                id="Editbtn"
+                type="submit"
+                onclick="editCityesForm(event)"
+              >
+                Edit
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Edit na lubimi gradove -->
+
+      <!-- dobavqne na lubimi gradove -->
+      <div>
+        <form class="modal" id="CitiesForm">
+          <div class="formdiv">
+            <div class="formdiv">
+              <h1 align="center">Add favorite cities</h1>
+
+              <input
+                class="formInput"
+                type="text"
+                id="favcity1"
+                placeholder="Enter first city"
+              />
+
+              <input
+                class="formInput"
+                type="text"
+                id="favcity2"
+                placeholder="Enter second city"
+              />
+              <input
+                class="formInput"
+                type="text"
+                id="favcity3"
+                placeholder="Enter third city"
+              />
+            </div>
+
+            <div>
+              <button
+                class="formButtonBottom"
+                id="RegistercloseBtn"
+                onclick="closeFavCitiesForm(event)"
+              >
+                Cancel
+              </button>
+              <button
+                class="formButtonBottom"
+                id="Registerreturn"
+                type="submit"
+                onclick="validateFavCitiesForm(event)"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- dobavqne na lubimi gradove -->
+
+      <!-- noviq register form  -->
+      <div>
+        <form class="modal" id="Registerform">
+          <div class="formdiv">
+            <div class="formdiv">
+              <h1 align="center">Sign up</h1>
+              <label for="name"
+                >User email <i class="fa-solid fa-person"></i>
+              </label>
+              <input
+                class="formInput"
+                type="email"
+                id="Registername"
+                placeholder="Enter User Email"
+              />
+
+              <label for="psw">Password <i class="fa-solid fa-key"></i></label>
+              <input
+                class="formInput"
+                type="password"
+                id="Registerpsw"
+                placeholder="Enter password"
+              />
+              <input
+                class="formInput"
+                type="password"
+                id="Registerpswconfirm"
+                placeholder="Confirm password"
+              />
+            </div>
+
+            <div>
+              <button
+                class="formButtonBottom"
+                id="RegistercloseBtn"
+                onclick="closeModalRegisterForm(event)"
+              >
+                Cancel
+              </button>
+              <button
+                class="formButtonBottom"
+                id="Registerreturn"
+                type="submit"
+                onclick="validateRegisterForm(event)"
+              >
+                Create Account
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- noviq  register form -->
+
+      <div>
+        <form class="modal" id="form">
+          <div class="formdiv">
+            <div class="formdiv">
+              <h1 align="center">Loggin</h1>
+              <label for="name"
+                >User email <i class="fa-solid fa-person"></i>
+              </label>
+              <input
+                class="formInput"
+                type="email"
+                id="name"
+                placeholder="Enter User Email"
+              />
+
+              <label for="psw">Password <i class="fa-solid fa-key"></i></label>
+              <input
+                class="formInput"
+                type="password"
+                id="psw"
+                placeholder="Enter password"
+              />
+            </div>
+
+            <div>
+              <button class="formButtonBottom" id="closeBtn">Cancel</button>
+              <button class="formButtonBottom" id="return" type="submit">
+                Loggin
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </header>
+    <div>
+      <input
+        class="Searchinput"
+        type="text"
+        placeholder="search"
+        id="search"
+        onchange="changeHanler(this.value)"
+      />
+    </div>
+
+    <div class="location">
+      <h1 class="location-timezone" id="timeZone">TimeZone</h1>
+    </div>
+    <div class="temperature">
+      <div class="degree-section">
+        <div class="row">
+          <h2 id="day1">Today</h2>
+          <h2 align="center" class="temperature-degree" id="h2"></h2>
+          <!-- <span>°C</span> -->
+        </div>
+
+        <div class="row">
+          <h2 id="day2"></h2>
+          <h2 align="center" class="temperature-degree" id="tuesday"></h2>
+          <!-- <span>°C</span> -->
+        </div>
+
+        <div class="row">
+          <h2 id="day3"></h2>
+          <h2 align="center" class="temperature-degree" id="wednesday"></h2>
+          <!-- <span>°C </span> -->
+        </div>
+
+        <div class="row">
+          <h2 id="day4"></h2>
+          <h2 align="center" class="temperature-degree" id="tuersday"></h2>
+          <!-- <span>°C</span> -->
+        </div>
+
+        <div class="row">
+          <h2 id="day5"></h2>
+          <h2 align="center" class="temperature-degree" id="friday"></h2>
+          <!-- <span>°C</span> -->
+        </div>
+
+        <div class="row">
+          <h2 id="day6"></h2>
+          <h2 align="center" class="temperature-degree" id="saturday"></h2>
+          <!-- <span>°C</span> -->
+        </div>
+        <div class="row">
+          <h2 id="day0"></h2>
+          <h2 align="center" class="temperature-degree" id="sunday"></h2>
+          <!-- <span>°C</span> -->
+        </div>
+      </div>
+      <div class="temperature-description" id="caption"></div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
